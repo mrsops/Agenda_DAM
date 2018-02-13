@@ -8,7 +8,6 @@ public class Aplicacion {
         Agenda agenda=new Agenda();
 
 
-
         do{
             menu();
             opcion = tc.nextLine();
@@ -96,7 +95,8 @@ public class Aplicacion {
         tc.nextLine();
         System.out.print("Introduce un texto descriptivo: ");
         String texto = tc.nextLine();
-        return new Cita(hora,minutos,titulo,texto);
+        Cita c1 = new Cita(hora,minutos,titulo,texto);
+        return c1;
     }
 
 

@@ -47,8 +47,10 @@ public class Pagina {
         String titulo = tc.nextLine();
         System.out.println("Introduce la hora nueva: ");
         int hora = tc.nextInt();
+        tc.nextLine();
         System.out.println("Introduce los minutos: ");
         int minutos = tc.nextInt();
+        tc.nextLine();
         System.out.println("Descripcion de la cita: ");
         String texto = tc.nextLine();
         return new Cita(hora, minutos, titulo, texto);

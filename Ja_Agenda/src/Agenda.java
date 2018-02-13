@@ -15,26 +15,27 @@ public class Agenda {
         }
         int diasMes=30;
         int mes=1;
-        int dia=1;
-        for (Pagina a:this.paginas) {
-            if (mes==1 || mes ==3 || mes==5 || mes==7 || mes==8 || mes ==10 || mes==12){
-                diasMes=31;
-            }else if(mes==2){
-                if(esBisiesto(this.año)){
-                    diasMes=29;
-                }else {
-                    diasMes=28;
+        int dia=0;
+        for (int i = 0; i <this.paginas.length ; i++) {
+            if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+                diasMes = 31;
+            } else if (mes == 2) {
+                if (esBisiesto(this.año)) {
+                    diasMes = 29;
+                } else {
+                    diasMes = 28;
                 }
-            }else if (mes==4 || mes ==6 || mes==9 || mes==11){
-                diasMes=30;
+            } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+                diasMes = 30;
             }
-            for (dia = 1; dia <=diasMes; dia++) {
-                a = new Pagina(dia, mes);
+            for (i = 1; i <= diasMes; i++) {
+                dia++;
+                this.paginas[i] = new Pagina(dia, mes);
+
             }
-            dia=1;
+            dia=0;
             mes++;
         }
-
     }
 
     public Agenda() {
@@ -47,12 +48,16 @@ public class Agenda {
      * @param mes
      */
     public void abrirPagina(int dia, int mes){
-
         this.abierta = quePagina(dia, mes);
     }
 
     public Pagina getAbierta() {
-        return abierta;
+        for (int i = 0; i <this.paginas.length ; i++) {
+            if (abierta==this.paginas[i]){
+                return this.paginas[i];
+            }
+        }
+        return null;
     }
 
     private boolean esBisiesto(int year) {
@@ -68,4 +73,15 @@ public class Agenda {
         }
         return null;
     }
+
+    private int indiceDia(int dia, int mes){
+        for (int i = 0; i <paginas.length ; i++) {
+            if (this.paginas[i].getDia()==dia && this.paginas[i].getMes()==mes){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
 }
