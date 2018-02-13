@@ -1,12 +1,12 @@
 import java.util.Calendar;
 
 public class Agenda {
-    private int año;
+    private int anyo;
     private Pagina[] paginas;
     private Pagina abierta;
 
     public Agenda(int año) {
-        this.año = año;
+        this.anyo = año;
 
         if (esBisiesto(año)){
             paginas = new Pagina[366];
@@ -16,11 +16,11 @@ public class Agenda {
         int diasMes=30;
         int mes=1;
         int dia=0;
-        for (int i = 0; i <this.paginas.length ; i++) {
+        for (int i = 1; i <=12 ; i++) {
             if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
                 diasMes = 31;
             } else if (mes == 2) {
-                if (esBisiesto(this.año)) {
+                if (esBisiesto(this.anyo)) {
                     diasMes = 29;
                 } else {
                     diasMes = 28;
@@ -28,12 +28,10 @@ public class Agenda {
             } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
                 diasMes = 30;
             }
-            for (i = 1; i <= diasMes; i++) {
+            for (int k = 1; k <= diasMes; k++) {
+                this.paginas[dia] = new Pagina(k, i);
                 dia++;
-                this.paginas[i] = new Pagina(dia, mes);
-
             }
-            dia=0;
             mes++;
         }
     }

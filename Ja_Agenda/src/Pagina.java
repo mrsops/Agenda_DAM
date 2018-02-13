@@ -38,20 +38,20 @@ public class Pagina {
     }
 
     private void listarCitas(){
-        System.out.println(this);
+        System.out.println(toString());
 
     }
 
     private Cita crearCita(){
         System.out.print("Introduce el titulo: ");
         String titulo = tc.nextLine();
-        System.out.println("Introduce la hora nueva: ");
+        System.out.print("Introduce la hora nueva: ");
         int hora = tc.nextInt();
         tc.nextLine();
-        System.out.println("Introduce los minutos: ");
+        System.out.print("Introduce los minutos: ");
         int minutos = tc.nextInt();
         tc.nextLine();
-        System.out.println("Descripcion de la cita: ");
+        System.out.print("Descripcion de la cita: ");
         String texto = tc.nextLine();
         return new Cita(hora, minutos, titulo, texto);
     }
@@ -60,8 +60,8 @@ public class Pagina {
         int id = 0;
         String texto="";
         for (Cita a:this.citas) {
-
-            texto ="ID: "+id+" Titulo: "+a.getTitulo()+". Hora: "+a.getHora()+":"+a.getMinutos()+" Descripcion: "+a.getTexto()+"\n";
+            texto +="ID: "+id+" Titulo: "+a.getTitulo()+". Hora: "+a.getHora()+":"+a.getMinutos()+" Descripcion: "+a.getTexto()+"\n";
+            id++;
         }
         return texto;
     }

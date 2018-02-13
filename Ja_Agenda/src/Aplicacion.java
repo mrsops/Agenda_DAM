@@ -57,7 +57,7 @@ public class Aplicacion {
                     System.out.println("");
                     System.out.println("----------------------------------------------");
                     System.out.println("");
-                    System.out.println("Introduce el id de la cita a modificar: ");
+                    System.out.print("Introduce el id de la cita a modificar: ");
                     id = tc.nextInt();
                     limpiapantalla();
                     agenda.getAbierta().modificarCita(id);
