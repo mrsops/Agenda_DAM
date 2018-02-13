@@ -1,7 +1,9 @@
+import java.util.Calendar;
+
 public class Agenda {
     private int año;
     private Pagina[] paginas;
-    public Pagina abierta;
+    private Pagina abierta;
 
     public Agenda(int año) {
         this.año = año;
@@ -34,7 +36,36 @@ public class Agenda {
         }
 
     }
+
+    public Agenda() {
+        this( Calendar.getInstance().get((Calendar.YEAR)));
+    }
+
+    /**
+     * Metodo que abre la agenda por un dia y mes indicados como parametros. La pagina abierta sera el atributo "abierta". Si no se encuentra la pagina, devolvera null.
+     * @param dia
+     * @param mes
+     */
+    public void abrirPagina(int dia, int mes){
+
+        this.abierta = quePagina(dia, mes);
+    }
+
+    public Pagina getAbierta() {
+        return abierta;
+    }
+
     private boolean esBisiesto(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+    }
+
+
+    private Pagina quePagina(int dia, int mes){
+        for (Pagina a:this.paginas) {
+           if (a.getDia()==dia && a.getMes()==mes){
+               return a;
+           }
+        }
+        return null;
     }
 }
