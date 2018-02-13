@@ -16,8 +16,7 @@ public class Agenda {
         int dia=1;
         for (Pagina a:this.paginas) {
             if (mes==1 || mes ==3 || mes==5 || mes==7 || mes==8 || mes ==10 || mes==12){
-                diasMes++;
-
+                diasMes=31;
             }else if(mes==2){
                 if(esBisiesto(this.año)){
                     diasMes=29;
@@ -27,15 +26,14 @@ public class Agenda {
             }else if (mes==4 || mes ==6 || mes==9 || mes==11){
                 diasMes=30;
             }
-
             for (dia = 1; dia <=diasMes; dia++) {
                 a = new Pagina(dia, mes);
             }
+            dia=1;
             mes++;
         }
 
     }
-
     private boolean esBisiesto(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
